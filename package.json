@@ -5,6 +5,7 @@
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "4.2.2",
     "tailwindcss": "^1.4.6",
     "turbolinks": "^5.2.0"
   },
@@ -19,7 +20,8 @@
     "jest": "^26.1.0",
     "jest-serializer-vue": "^2.0.2",
     "stylelint": "^13.6.1",
-    "vue-jest": "^3.0.6"
+    "vue-jest": "^3.0.6",
+    "webpack-dev-server": "^3.11.0"
   },
   "engines": {
     "node": "12.x"
