@@ -502,7 +502,24 @@ Performance/RedundantBlockCall:
   Description: Use `yield` instead of `block.call`.
   Reference: https://github.com/JuanitoFatas/fast-ruby#proccall-vs-yield-code
   Enabled: false
+Performance/AncestorsInclude:
+  Enabled: false
+Performance/BigDecimalWithNumericArgument:
+  Enabled: false
+Performance/RedundantSortBlock:
+  Enabled: false
+Performance/RedundantStringChars:
+  Enabled: false
+Performance/ReverseFirst:
+  Enabled: false
+Performance/SortReverse:
+  Enabled: false
+Performance/Squeeze:
+  Enabled: false
+Performance/StringInclude:
+  Enabled: false
 RSpec/MultipleExpectations:
+  Enabled: false
   Max: 5
 RSpec/NestedGroups:
   Max: 5
