@@ -4,6 +4,7 @@ gem 'aws-sdk-s3', '~> 1.0'
 gem 'bootsnap', require: false
 gem 'data_migrate'
 gem 'enumerize'
+gem 'guillotine', git: 'https://github.com/budacom/guillotine'
 gem 'jbuilder', '~> 2.7'
 gem 'pg'
 gem 'power-types'
