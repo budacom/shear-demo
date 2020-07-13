@@ -5,6 +5,7 @@ development: &default
   host: <%= ENV["DB_HOST"] || "127.0.0.1" %>
   port: <%= ENV["DB_PORT"] || 5432 %>
   username: <%= ENV["DB_USER"] || 'postgres' %>
+  password: <%= ENV["DB_PASSWORD"] || '' %>
   min_messages: warning
   pool: <%= Integer(ENV.fetch("DB_POOL", 5)) %>
   reaping_frequency: <%= Integer(ENV.fetch("DB_REAPING_FREQUENCY", 10)) %>
