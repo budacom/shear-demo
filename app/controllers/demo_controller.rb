@@ -1,6 +1,9 @@
 class DemoController < ApplicationController
   GOOGLE_API_KEY = ENV.fetch("GOOGLE_API_KEY")
 
+  attr_reader :class, :number, :municipality, :names, :surnames, :adress, :issue_date
+  attr_reader :expiration_date, :transform, :error
+
   def index
     puts "I'm in the home page!"
   end
