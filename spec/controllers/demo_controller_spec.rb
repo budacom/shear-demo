@@ -25,7 +25,7 @@ RSpec.describe DemoController do
     end
   end
 
-  describe "#process" do
+  describe "#process_image" do
     let(:word_collection) do
       Guillotine::WordCollection.new.tap do |w|
         w.push_word('LICENCIA', bounding_box: [[314, 49], [420, 49], [420, 71], [314, 71]])
@@ -73,8 +73,8 @@ RSpec.describe DemoController do
     end
 
     it "reads all the fields from the image" do
-      demo.send(:process)
-      expect(demo.class).to eq "B"
+      demo.send(:process_image)
+      expect(demo.license_class).to eq "B"
       expect(demo.number).to eq "18936676-0"
       expect(demo.municipality).to eq "LAS CONDES"
       expect(demo.names).to eq "ANTONIO"
@@ -85,7 +85,7 @@ RSpec.describe DemoController do
     end
 
     it "gets a transformation and an error" do
-      demo.send(:process)
+      demo.send(:process_image)
       expect(demo.transform).to be_an_instance_of(Matrix)
       expect(demo.error).to be >= 0
     end

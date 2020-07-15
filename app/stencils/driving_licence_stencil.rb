@@ -24,7 +24,7 @@ class DrivingLicenceStencil < BaseStencil
 
   def fields
     @fields ||= Set[
-      "class",
+      "license_class",
       "number",
       "municipality",
       "names",
@@ -35,11 +35,11 @@ class DrivingLicenceStencil < BaseStencil
     ]
   end
 
-  attr_reader :class, :number, :municipality, :names, :surnames
+  attr_reader :license_class, :number, :municipality, :names, :surnames
   attr_reader :adress, :issue_date, :expiration_date
 
   def process_match
-    @class = read_relative_if_possible(:class, [52.48, 15.392], [52.964, 17.453],
+    @license_class = read_relative_if_possible(:class, [52.48, 15.392], [52.964, 17.453],
       _exclusion_key: :class).to_s
     @number = read_relative_if_possible(:class, [52.722, 19.028], [62.66, 21.089],
     _exclusion_key: :number).to_s
