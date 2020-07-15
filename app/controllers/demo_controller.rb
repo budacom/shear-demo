@@ -1,7 +1,7 @@
 class DemoController < ApplicationController
   GOOGLE_API_KEY = ENV.fetch("GOOGLE_API_KEY")
 
-  attr_reader :class, :number, :municipality, :names, :surnames, :adress, :issue_date
+  attr_reader :license_class, :number, :municipality, :names, :surnames, :adress, :issue_date
   attr_reader :expiration_date, :transform, :error
 
   def index
@@ -10,10 +10,10 @@ class DemoController < ApplicationController
 
   private
 
-  def process
+  def process_image
     word_collection = Guillotine::WordCollection.build_from_url image_url, GOOGLE_API_KEY
     stencil = DrivingLicenceStencil.match word_collection
-    @class = stencil.class
+    @license_class = stencil.license_class
     @number = stencil.number
     @municipality = stencil.municipality
     @names = stencil.names
