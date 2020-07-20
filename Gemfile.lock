@@ -224,6 +224,7 @@ GEM
     parallel (1.19.2)
     parser (2.7.1.4)
       ast (~> 2.4.1)
+    patron (0.13.3)
     pg (1.2.3)
     power-types (0.3.1)
     pry (0.13.1)
@@ -404,6 +405,7 @@ DEPENDENCIES
   enumerize
   factory_bot_rails
   faker
+  faraday (~> 0.17)
   faraday_middleware (~> 0.14)
   google-cloud-vision (~> 1.0)
   guard-rspec
@@ -412,6 +414,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen
   mini_magick
+  patron (~> 0.6)
   pg
   power-types
   pry-byebug

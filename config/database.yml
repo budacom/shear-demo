@@ -1,11 +1,11 @@
 development: &default
   adapter: postgresql
-  database: guillotine-demo_development
+  database: postgres
   encoding: utf8
   host: <%= ENV["DB_HOST"] || "127.0.0.1" %>
   port: <%= ENV["DB_PORT"] || 5432 %>
   username: <%= ENV["DB_USER"] || 'postgres' %>
-  password: <%= ENV["DB_PASSWORD"] || '' %>
+  password: <%= ENV["DB_PASSWORD"] || 'postgres' %>
   min_messages: warning
   pool: <%= Integer(ENV.fetch("DB_POOL", 5)) %>
   reaping_frequency: <%= Integer(ENV.fetch("DB_REAPING_FREQUENCY", 10)) %>
