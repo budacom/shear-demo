@@ -6,8 +6,8 @@ services:
     ports:
     - 5432
     environment:
-      - DB_USER=postgres_user
-      - DB_PASSWORD=postgres_password
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
     volumes:
     - postgresql_data:/var/lib/postgresql/data
   minio:

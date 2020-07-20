@@ -4,11 +4,13 @@ gem 'aws-sdk-s3', '~> 1.0'
 gem 'bootsnap', require: false
 gem 'data_migrate'
 gem 'enumerize'
-gem 'faraday_middleware', '~> 0.14' # Eliminar cuando se actualize gema
-gem 'google-cloud-vision', '~> 1.0' # Eliminar cuando se actualize gema
+gem 'faraday', '~> 0.17'
+gem 'faraday_middleware', '~> 0.14'
+gem 'google-cloud-vision', '~> 1.0'
 gem 'guillotine', git: 'https://github.com/budacom/guillotine'
 gem 'jbuilder', '~> 2.7'
 gem 'mini_magick'
+gem 'patron', '~> 0.6'
 gem 'pg'
 gem 'power-types'
 gem 'puma', '~> 4.1'
