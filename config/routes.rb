@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
   get "", to: 'demo#index'
+  get "process_image", to: 'demo#process_image'
   mount Sidekiq::Web => '/queue'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
