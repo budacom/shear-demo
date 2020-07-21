@@ -39,20 +39,20 @@ class DrivingLicenceStencil < BaseStencil
   attr_reader :adress, :issue_date, :expiration_date
 
   def process_match
-    @expiration_date = read_relative_if_possible(:issue, [48.0, 41.693], [62.0, 46.056])
-    @issue_date = read_relative_if_possible(:issue, [48.0, 39.148], [62.0, 41.693])
-    @adress = read_relative_if_possible(:adress, [448.0, 34.178], [62.0, 39.148], _line_height: 2.0)
-    @surnames = read_relative_if_possible(:surnames, [48.0, 30.3], [62.0, 34.178])
-    @names = read_relative_if_possible(:names, [48.0, 26.664], [62.0, 30.3])
-    @municipality = read_relative_if_possible(:municipality, [48.0, 22.907], [62.0, 26.664])
-    @number = read_relative_if_possible(:class, [48.0, 19.028], [62.0, 22.907])
-    @license_class = read_relative_if_possible(:class, [48.0, 15.392], [62.0, 19.028])
+    @expiration_date = read_relative_if_possible(:issue, [48.0, 41.5], [68.0, 46.0])
+    @issue_date = read_relative_if_possible(:issue, [48.0, 38.0], [68.0, 41.5])
+    @adress = read_relative_if_possible(:adress, [48.0, 32.0], [68.0, 38.0])
+    @surnames = read_relative_if_possible(:surnames, [48.0, 28.0], [68.0, 32.0])
+    @names = read_relative_if_possible(:names, [48.0, 26.0], [68.0, 28.0])
+    @municipality = read_relative_if_possible(:municipality, [48.0, 22.0], [68.0, 26.0])
+    @number = read_relative_if_possible(:class, [48.0, 18.0], [68.0, 22.0])
+    @license_class = read_relative_if_possible(:class, [45.0, 12.0], [68.0, 18.0])
   end
 
   private
 
   def read_relative_if_possible(_label, _min, _max,
-    _exclusion_key: :all, _delete: true, _line_height: 2.0)
+    _exclusion_key: :all, _delete: true, _line_height: 1.0)
     template = DrivingLicenceStencil.template
     exclusion = _exclusion_key.present? ? template.get_exclusions(_exclusion_key) : Set[]
 
