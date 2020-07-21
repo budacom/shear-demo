@@ -2,21 +2,37 @@
 
 <img src=<%= @image_url %>>
 
-<button onclick="get_image_values()">Process image</button>
+<br>
 
-<table>
+<button id="process_image_button">Process image</button>
+
+<br>
+
+<table id="process_image_results">
   <tr>
     <th>Field</th>
     <th>Value</th>
     <th>Confidence</th>
   </tr>
-  <% @read_values.each do |key, value| %>
-    <tr>
-      <td><%= key %></td>
-      <td><%= value.to_s %></td>
-      <td><%= value.confidence %></td>
-    </tr>
-  <% end %>
 </table>
 
 <p id="demo"></p>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $("#process_image_button").on('click', function() {
+    $.get('process_image', function(data, status) {
+      $(".table_row").remove();
+      for (field in data["read_values"]) {
+        $("#process_image_results").append(
+          `<tr class="table_row">
+            <td>` + field + `</td>
+            <td>` + data["read_values"][field].string + `</td>
+            <td>` + data["read_values"][field].confidence + `</td>
+          </tr>`
+        )
+      }
+    });
+  })
+</script>

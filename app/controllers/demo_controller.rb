@@ -12,12 +12,10 @@ class DemoController < ApplicationController
     @image_url = image_url
   end
 
-  private
-
   def process_image
     word_collection = Guillotine::WordCollection.build_from_url image_url, GOOGLE_API_KEY
     stencil = DrivingLicenceStencil.match word_collection
-    @read_values = {
+    read_values = {
       license_class: stencil.license_class,
       number: stencil.number,
       municipality: stencil.municipality,
@@ -27,9 +25,19 @@ class DemoController < ApplicationController
       issue_date: stencil.issue_date,
       expiration_date: stencil.expiration_date
     }
-    @transform = stencil.match.transform
-    @error = stencil.match.error
+    transform = stencil.match.transform
+    error = stencil.match.error
+    answer = {
+      read_values: read_values,
+      transform: transform,
+      error: error
+    }
+    respond_to do |format|
+      format.json { render json: answer }
+    end
   end
+
+  private
 
   def image_url
     upload_image_url.presence || default_image_url
