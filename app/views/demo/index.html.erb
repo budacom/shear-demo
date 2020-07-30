@@ -1,23 +1,68 @@
-<h1>Demo</h1>
 
-<img src=<%= @image_url %>>
-
-<br>
-
-<button id="process_image_button">Process image</button>
-
-<br>
-
-<table id="process_image_results">
-  <tr>
-    <th>Field</th>
-    <th>Value</th>
-    <th>Confidence</th>
-  </tr>
-</table>
-
-<p id="demo"></p>
-
+<div id="wrapper">
+  <div id="header">
+    <h1>
+      Guillotine gem Demo
+    </h1>
+  </div>
+  <div id="content">
+    <p>This demo was made to show how the gem Guillotine can be used to extract structured text from a document image. The document used for this demo is the Chilean Driving license and the data to be extracted are all its fields.</p>
+    <p>In order to work a detailed description of the document must be created and used by Guillotine. This description is called Stencil. If you want to know more about this visit the <a href="https://github.com/budacom/guillotine/wiki">Documentation</a>.</p>
+    <p>Press the process image button to use the gem to get the results of the example image.</p>
+    <img src=<%= @image_url %>>
+    <button id="process_image_button">Process image</button>
+    <p>The final result are the read words from the image and a confidence. This confidence comes from the google vision API when reading the words.</p>
+    <table id="process_image_results">
+      <tr>
+        <th>Field</th>
+        <th>Value</th>
+        <th>Confidence</th>
+      </tr>
+      <tr class="table_row">
+        <td>license_class</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table_row">
+        <td>number</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table_row">
+        <td>municipality</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table_row">
+        <td>names</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table_row">
+        <td>surnames</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table_row">
+        <td>adress</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table_row">
+        <td>issue_date</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table_row">
+        <td>expiration_date</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+    <br>
+    <p>Another output given by Guillotine is the matrix transformation used to align the image. This could be usefull to display the image aligned or even extract the document Photo.</p>
+  </div>
+</div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
