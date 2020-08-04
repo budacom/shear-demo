@@ -1,6 +1,7 @@
 require 'aws-sdk-s3'
 
 class DemoController < ApplicationController
+  skip_before_action :verify_authenticity_token
   GOOGLE_API_KEY = ENV.fetch("GOOGLE_API_KEY")
   MINIO_ACCESS_KEY = ENV.fetch("MINIO_ACCESS_KEY")
   MINIO_SECRET_KEY = ENV.fetch("MINIO_SECRET_KEY")
@@ -10,17 +11,16 @@ class DemoController < ApplicationController
 
   def index
     @read_values = {}
-    @transform = [
-      [1, 0, 0],
-      [0, 1, 0],
-      [0, 0, 1]
-    ]
     @error = nil
-    @image_url = image_url
+    if flash[:image_url]
+      @displayed_image = flash[:image_url]
+    else
+      @displayed_image = default_image_url
+    end
   end
 
   def process_image
-    word_collection = Guillotine::WordCollection.build_from_url image_url, GOOGLE_API_KEY
+    word_collection = Guillotine::WordCollection.build_from_url params[:image_url], GOOGLE_API_KEY
     stencil = DrivingLicenceStencil.match word_collection
     read_values = {
       license_class: stencil.license_class,
@@ -44,7 +44,8 @@ class DemoController < ApplicationController
     end
   end
 
-  def test_minio_bucket_access
+  def upload
+    uploaded_file = params["image_input"].tempfile
     Aws.config.update(
       endpoint: "http://#{MINIO_HOST}:#{MINIO_PORT}",
       access_key_id: MINIO_ACCESS_KEY,
@@ -52,22 +53,17 @@ class DemoController < ApplicationController
       force_path_style: true,
       region: 'us-east-1'
     )
-
     bucket = Aws::S3::Bucket.new MINIO_BUCKET
-    bucket.objects.each do |o|
-      puts o.key
+    obj = bucket.object('image.png')
+    obj.upload_file(uploaded_file)
+    presigned_url = obj.presigned_url(:get, expires_in: 3000)
+
+    respond_to do |format|
+      format.json { render json: { url: presigned_url } }
     end
   end
 
   private
-
-  def image_url
-    upload_image_url.presence || default_image_url
-  end
-
-  def upload_image_url
-    nil
-  end
 
   def default_image_url
     "https://opcionis.cl/blog/wp-content/uploads/2017/02/licencia-de-conducir-chile.jpg"

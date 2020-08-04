@@ -9,7 +9,12 @@
     <p>This demo was made to show how the gem Guillotine can be used to extract structured text from a document image. The document used for this demo is the Chilean Driving license and the data to be extracted are all its fields.</p>
     <p>In order to work a detailed description of the document must be created and used by Guillotine. This description is called Stencil. If you want to know more about this visit the <a href="https://github.com/budacom/guillotine/wiki">Documentation</a>.</p>
     <p>Press the process image button to use the gem to get the results of the example image.</p>
-    <img src=<%= @image_url %>>
+    <form enctype="multipart/form-data" id="file_form" method="post">
+      <input type="file" id="image_input" name="image_input"/>
+      <input type="submit" value="Upload" id=upload_image_button/>
+    </form>
+    <div id="mensaje"></div>
+    <img id=image_display src=<%= @displayed_image %>>
     <button id="process_image_button">Process image</button>
     <p>The final result are the read words from the image and a confidence. This confidence comes from the google vision API when reading the words.</p>
     <table id="process_image_results">
@@ -67,7 +72,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
   $("#process_image_button").on('click', function() {
-    $.get('process_image', function(data, status) {
+    $.post('process_image', { image_url: $("#image_display").attr("src") }, function(data, status) {
       $(".table_row").remove();
       for (field in data["read_values"]) {
         $("#process_image_results").append(
@@ -80,4 +85,21 @@
       }
     });
   })
+
+  $("#file_form").on("submit", function(e) {
+    e.preventDefault();
+    var f = $(this);
+    var formData = new FormData(document.getElementById("file_form"));
+    $.ajax({
+      url: 'upload',
+      type: "post",
+      dataType: "html",
+      data: formData,
+      cache: false,
+      contentType: false,
+      processData: false
+    }).done(function(res) {
+      $("#image_display").attr("src", JSON.parse(res).url)
+    });
+  });
 </script>
