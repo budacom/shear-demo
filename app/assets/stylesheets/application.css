@@ -126,3 +126,18 @@ input[type="submit"] {
 p {
   margin:0 10px 10px;
 }
+
+/* Warning message */
+#message-container {
+  background-color: rgb(202, 156, 148);
+  border-color: rgb(196, 120, 120);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  display: none;
+}
+
+#message {
+  font-weight: bold;
+  padding-top: 8px;
+}
