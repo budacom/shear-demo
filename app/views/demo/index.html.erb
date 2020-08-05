@@ -1,0 +1,160 @@
+
+<div id="wrapper">
+  <div id="header">
+    <h1>
+      Guillotine gem Demo
+    </h1>
+  </div>
+  <div id="content">
+    <p>This demo was made to show how the gem Guillotine can be used to extract structured text from a document image. The document used for this demo is the Chilean Driving license and the data to be extracted are all its fields.</p>
+    <p>In order to work a detailed description of the document must be created and used by Guillotine. This description is called Stencil. If you want to know more about this visit the <a href="https://github.com/budacom/guillotine/wiki">Documentation</a>.</p>
+    <p>Press the process image button to use the gem to get the results of the example image. You can also upload a Chilean drivers license image an get the fields using Guillotine.</p>
+    <form enctype="multipart/form-data" id="file_form" method="post">
+      <input type="file" id="image_input" name="image_input"/>
+      <input type="submit" value="Upload" id=upload_image_button/>
+    </form>
+    <img id=image_display src=<%= @displayed_image %>>
+    <button id="process_image_button">Process image</button>
+    <div id="message-container">
+      <p id=message>The document field could not be extracted from the image. There are several reasons this could happen like the immage is too blury or the immage is not a Chilean drives license.</p>
+    </div>
+    <p>The final result are the read words from the image and a confidence. This confidence comes from the google vision API when reading the words.</p>
+    <table id="process_image_results">
+      <tr>
+        <th>Field</th>
+        <th>Value</th>
+        <th>Confidence</th>
+      </tr>
+      <tr class="table_row">
+        <td>license_class</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table_row">
+        <td>number</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table_row">
+        <td>municipality</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table_row">
+        <td>names</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table_row">
+        <td>surnames</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table_row">
+        <td>adress</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table_row">
+        <td>issue_date</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table_row">
+        <td>expiration_date</td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+    <br>
+    <p>Another output given by Guillotine is the matrix transformation used to align the image. This could be usefull to display the image aligned or even extract the document Photo.</p>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+  $("#process_image_button").on('click', function() {
+    $("#message-container").css("display", "none")
+    $.post('process_image', { image_url: $("#image_display").attr("src") }, function(data, status) {
+      if (data["status"] == "failed") {
+        $("#message-container").css("display", "block")
+      } else {
+        $(".table_row").remove();
+        for (field in data["read_values"]) {
+          $("#process_image_results").append(
+            `<tr class="table_row">
+              <td>` + field + `</td>
+              <td>` + data["read_values"][field].string + `</td>
+              <td>` + data["read_values"][field].confidence + `</td>
+            </tr>`
+          )
+        }
+      }
+    });
+  })
+
+  $("#file_form").on("submit", function(e) {
+    clear_data();
+    e.preventDefault();
+    var f = $(this);
+    var formData = new FormData(document.getElementById("file_form"));
+    $.ajax({
+      url: 'upload',
+      type: "post",
+      dataType: "html",
+      data: formData,
+      cache: false,
+      contentType: false,
+      processData: false
+    }).done(function(res) {
+      $("#image_display").attr("src", JSON.parse(res).url)
+    });
+  });
+
+  function clear_data() {
+    $("#message-container").css("display", "none")
+    $(".table_row").remove();
+    $("#process_image_results").append(
+      `<tr class="table_row">
+        <td>license_class</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table_row">
+        <td>number</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table_row">
+        <td>municipality</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table_row">
+        <td>names</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table_row">
+        <td>surnames</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table_row">
+        <td>adress</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table_row">
+        <td>issue_date</td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr class="table_row">
+        <td>expiration_date</td>
+        <td></td>
+        <td></td>
+      </tr>`
+    )
+  }
+</script>

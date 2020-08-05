@@ -11,3 +11,133 @@
  * It is generally better to create a new file per style scope.
  *
  */
+
+/* App and body css */
+html,body {
+  margin:0;
+  padding:0;
+}
+body {
+  font-family: arial,sans-serif;
+  text-align:center;
+}
+div#app {
+  text-align:left;
+  width:100%;
+}
+
+/* Header */
+div#header {
+  background-color:#A4B8C4;
+}
+div#header h1 {
+  height:80px;
+  line-height:80px;
+  margin:0;
+  padding-left:20px;
+}
+
+/* Warpper */
+div#wrapper {
+  background: #FCFAFA;
+  float:left;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  position: relative;
+  height: auto;
+  min-height: 100%;
+}
+div#content {
+  margin-top: 10px;
+  width: 94%;
+  margin-left: 3%;
+  margin-right: 3%;
+}
+div#content p {
+  line-height:1.4
+}
+
+/* Image */
+img {
+  display: block;
+  margin-left: 0%;
+  margin-right: 60%;
+  width: 40%;
+  border: #b3b3b3;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 5px;
+}
+
+/* Table */
+#process_image_results {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#process_image_results td, #process_image_results th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#process_image_results tr:nth-child(even){background-color: #f2f2f2;}
+
+#process_image_results tr:hover {background-color: #ddd;}
+
+#process_image_results th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #A4B8C4;
+}
+
+/* Buttons */
+button {
+  font-weight: bold;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  background-color: #A4B8C4;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+input[type="submit"] {
+  font-weight: bold;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  background-color: #A4B8C4;
+  border: none;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+/* General format */
+p {
+  margin:0 10px 10px;
+}
+
+/* Warning message */
+#message-container {
+  background-color: rgb(202, 156, 148);
+  border-color: rgb(196, 120, 120);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  display: none;
+}
+
+#message {
+  font-weight: bold;
+  padding-top: 8px;
+}
