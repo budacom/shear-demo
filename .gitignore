@@ -36,7 +36,6 @@
 .env
 node_modules/
 
-/public/packs/js
 /public/packs-test
 /node_modules
 /yarn-error.log
