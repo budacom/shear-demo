@@ -1,7 +1,7 @@
 aws_config = {
-  region: 'us-east-1',
+  region: ENV.fetch('BUCKETEER_AWS_REGION'),
   credentials: Aws::Credentials.new(
-    ENV.fetch('AWS_ACCESS_KEY_ID'), ENV.fetch('AWS_SECRET_ACCESS_KEY')
+    ENV.fetch('BUCKETEER_AWS_ACCESS_KEY_ID'), ENV.fetch('BUCKETEER_AWS_SECRET_ACCESS_KEY')
   )
 }
 

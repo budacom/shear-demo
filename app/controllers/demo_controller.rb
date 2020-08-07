@@ -3,7 +3,7 @@ require 'aws-sdk-s3'
 class DemoController < ApplicationController
   skip_before_action :verify_authenticity_token
   GOOGLE_API_KEY = ENV.fetch("GOOGLE_API_KEY")
-  AWS_BUCKET = ENV.fetch("AWS_BUCKET")
+  AWS_BUCKET = ENV.fetch("BUCKETEER_BUCKET_NAME")
 
   def index
     @read_values = {}
