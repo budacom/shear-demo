@@ -62,7 +62,7 @@ class DemoController < ApplicationController
   private
 
   def default_image_url
-    "http://localhost:3000/default.jpg"
+    request.base_url + "/default.jpg"
   end
 
   def generate_image_name
