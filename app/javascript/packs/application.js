@@ -1,5 +1,3 @@
-import Vue from 'vue/dist/vue.esm';
-import App from '../app.vue';
 import '../css/application.css';
 
 document.addEventListener('DOMContentLoaded', () => {
