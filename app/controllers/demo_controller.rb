@@ -62,7 +62,7 @@ class DemoController < ApplicationController
   private
 
   def default_image_url
-    "https://opcionis.cl/blog/wp-content/uploads/2017/02/licencia-de-conducir-chile.jpg"
+    request.base_url + "/default.jpg"
   end
 
   def generate_image_name
