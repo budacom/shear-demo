@@ -8,6 +8,4 @@ Go to the [shear gem repository](https://github.com/budacom/guillotine) to learn
 
 # Credits
 
-This demo was made by [Antonio López](https://github.com/alopez7) in colaboration with [Buda.com SpA](buda.com)
-
-<img src="https://www.buda.com/assets/buda/logo-dark.png" alt="buda" width="250"/>
+This demo was made by [Antonio López](https://github.com/alopez7) in colaboration with [Buda.com SpA](https://www.buda.com)
