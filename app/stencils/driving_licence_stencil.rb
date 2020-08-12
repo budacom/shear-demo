@@ -40,12 +40,12 @@ class DrivingLicenceStencil < BaseStencil
   def process_match
     @expiration_date = read_relative_if_possible(:issue, [410, 360], [550, 390])
     @issue_date = read_relative_if_possible(:issue, [425, 325], [540, 350])
-    @adress = read_relative_if_possible(:adress, [310, 285], [530, 320])
-    @surnames = read_relative_if_possible(:surnames, [333, 253], [510, 280])
-    @names = read_relative_if_possible(:names, [330, 220], [510, 248])
-    @municipality = read_relative_if_possible(:municipality, [375, 185], [510, 215])
+    @adress = read_relative_if_possible(:adress, [310, 285], [540, 320])
+    @surnames = read_relative_if_possible(:surnames, [333, 253], [540, 280])
+    @names = read_relative_if_possible(:names, [330, 220], [540, 248])
+    @municipality = read_relative_if_possible(:municipality, [375, 185], [540, 215])
     @license_class = read_relative_if_possible(:class, [315, 115], [460, 145])
-    @number = read_relative_if_possible(:class, [375, 150], [510, 180])
+    @number = read_relative_if_possible(:class, [375, 150], [540, 180])
   end
 
   private
