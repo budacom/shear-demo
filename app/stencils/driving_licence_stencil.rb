@@ -1,15 +1,14 @@
 class DrivingLicenceStencil < BaseStencil
   def self.template
     @template ||= Guillotine::Template.build do |t|
-      t.set 'LICENCIA', at: [38.057, 5.939], filter: 'big'
-      t.set 'CONDUCTOR', at: [56.6, 5.939]
-      t.set 'DIRECCION', at: [35.875, 34.542], label: :adress
-      t.set 'ULTIMO', at: [40.966, 38.542], label: :issue
-      t.set 'CLASE', at: [35.875, 15.392], label: :class
-      t.set 'NOMBRES', at: [35.875, 26.785], label: :names
-      t.set 'APELLIDOS', at: [35.754, 30.421], label: :surnames
-      t.set 'CHILE', at: [63.751, 8.848]
-      t.set 'MUNICIPALIDAD', at: [35.512, 22.543], label: :municipality
+      t.set 'REPUBLICA', at: [270, 80]
+      t.set 'CHILE', at: [483, 80]
+      t.set 'DIRECCION', at: [243, 302], label: :adress
+      t.set 'ULTIMO', at: [286, 337], label: :issue
+      t.set 'APELLIDOS', at: [241, 267], label: :surnames
+      t.set 'NOMBRES', at: [244, 234], label: :names
+      t.set 'MUNICIPALIDAD', at: [240, 199], label: :municipality
+      t.set 'CLASE', at: [243, 131], label: :class
       t.set_exclusion :all, 'CLASE'
       t.set_exclusion :all, 'LICENCIA'
       t.set_exclusion :all, 'MUNICIPALIDAD'
@@ -39,20 +38,20 @@ class DrivingLicenceStencil < BaseStencil
   attr_reader :adress, :issue_date, :expiration_date
 
   def process_match
-    @expiration_date = read_relative_if_possible(:issue, [48.0, 41.5], [68.0, 46.0])
-    @issue_date = read_relative_if_possible(:issue, [48.0, 38.0], [68.0, 41.5])
-    @adress = read_relative_if_possible(:adress, [48.0, 32.0], [68.0, 38.0])
-    @surnames = read_relative_if_possible(:surnames, [48.0, 28.0], [68.0, 32.0])
-    @names = read_relative_if_possible(:names, [48.0, 26.0], [68.0, 28.0])
-    @municipality = read_relative_if_possible(:municipality, [48.0, 22.0], [68.0, 26.0])
-    @number = read_relative_if_possible(:class, [48.0, 18.0], [68.0, 22.0])
-    @license_class = read_relative_if_possible(:class, [45.0, 12.0], [68.0, 18.0])
+    @expiration_date = read_relative_if_possible(:issue, [410, 360], [550, 390])
+    @issue_date = read_relative_if_possible(:issue, [425, 325], [540, 350])
+    @adress = read_relative_if_possible(:adress, [310, 285], [530, 320])
+    @surnames = read_relative_if_possible(:surnames, [333, 253], [510, 280])
+    @names = read_relative_if_possible(:names, [330, 220], [510, 248])
+    @municipality = read_relative_if_possible(:municipality, [375, 185], [510, 215])
+    @license_class = read_relative_if_possible(:class, [315, 115], [460, 145])
+    @number = read_relative_if_possible(:class, [375, 150], [510, 180])
   end
 
   private
 
   def read_relative_if_possible(_label, _min, _max,
-    _exclusion_key: :all, _delete: true, _line_height: 1.0)
+    _exclusion_key: :all, _delete: true, _line_height: 5)
     template = DrivingLicenceStencil.template
     exclusion = _exclusion_key.present? ? template.get_exclusions(_exclusion_key) : Set[]
 
