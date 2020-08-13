@@ -1,6 +1,6 @@
 class DrivingLicenceStencil < BaseStencil
   def self.template
-    @template ||= Guillotine::Template.build do |t|
+    @template ||= Shear::Template.build do |t|
       t.set 'REPUBLICA', at: [270, 80]
       t.set 'CHILE', at: [483, 80]
       t.set 'DIRECCION', at: [243, 302], label: :adress
