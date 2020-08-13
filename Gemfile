@@ -52,7 +52,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-nc', require: false
   gem 'rspec-rails'
-  gem 'rubocop', '~> 0.82.0'
+  gem 'rubocop', '~> 0.87.0'
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
