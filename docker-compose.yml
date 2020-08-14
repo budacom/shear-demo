@@ -4,9 +4,9 @@ services:
   postgresql:
     image: postgres:11.3
     environment:
-      - POSTGRES_USER=guillotinedemo
-      - POSTGRES_PASSWORD=guillotinedemo
-      - POSTGRES_DB=guillotinedemo
+      - POSTGRES_USER=sheardemo
+      - POSTGRES_PASSWORD=sheardemo
+      - POSTGRES_DB=sheardemo
     ports:
       - "5432:5432"
     volumes:

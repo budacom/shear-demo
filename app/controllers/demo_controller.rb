@@ -16,7 +16,7 @@ class DemoController < ApplicationController
   end
 
   def process_image
-    word_collection = Guillotine::WordCollection.build_from_url params[:image_url], GOOGLE_API_KEY
+    word_collection = Shear::WordCollection.build_from_url params[:image_url], GOOGLE_API_KEY
     stencil = DrivingLicenceStencil.match word_collection
     if stencil == nil
       respond_to do |format|

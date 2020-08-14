@@ -27,7 +27,7 @@ RSpec.describe DemoController do
 
   describe "#process_image" do
     let(:word_collection) do
-      Guillotine::WordCollection.new.tap do |w|
+      Shear::WordCollection.new.tap do |w|
         w.push_word('LICENCIA', bounding_box: [[314, 49], [420, 49], [420, 71], [314, 71]])
         w.push_word('DE', bounding_box: [[430, 49], [458, 49], [458, 71], [430, 71]])
         w.push_word('CONDUCTOR', bounding_box: [[467, 49], [614, 49], [614, 71], [467, 71]])
@@ -69,7 +69,7 @@ RSpec.describe DemoController do
     end
 
     before do
-      allow(Guillotine::WordCollection).to receive(:build_from_url).and_return(word_collection)
+      allow(Shear::WordCollection).to receive(:build_from_url).and_return(word_collection)
     end
 
     it "reads all the fields from the image" do

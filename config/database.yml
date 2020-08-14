@@ -8,7 +8,7 @@ development: &default
 
 test:
   <<: *default
-  database: guillotine-demo_test
+  database: shear-demo_test
 
 production: &deploy
   adapter: postgresql

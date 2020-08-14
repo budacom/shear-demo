@@ -1,4 +1,4 @@
-PROJECT ?= guillotine-demo
+PROJECT ?= shear-demo
 
 SHELL := /bin/bash
 
