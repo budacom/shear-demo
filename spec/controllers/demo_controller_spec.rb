@@ -79,7 +79,7 @@ RSpec.describe DemoController do
       expect(demo.municipality).to eq "LAS CONDES"
       expect(demo.names).to eq "ANTONIO"
       expect(demo.surnames).to eq "LOPEZ LARRAECHEA"
-      expect(demo.adress).to eq "MANANTIALES 304\nLAS CONDES"
+      expect(demo.address).to eq "MANANTIALES 304\nLAS CONDES"
       expect(demo.issue_date).to eq "13/03/2019"
       expect(demo.expiration_date).to eq "20/01/2025"
     end
