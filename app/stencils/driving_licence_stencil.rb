@@ -3,7 +3,7 @@ class DrivingLicenceStencil < BaseStencil
     @template ||= Shear::Template.build do |t|
       t.set 'REPUBLICA', at: [270, 80]
       t.set 'CHILE', at: [483, 80]
-      t.set 'DIRECCION', at: [243, 302], label: :adress
+      t.set 'DIRECCION', at: [243, 302], label: :address
       t.set 'ULTIMO', at: [286, 337], label: :issue
       t.set 'APELLIDOS', at: [241, 267], label: :surnames
       t.set 'NOMBRES', at: [244, 234], label: :names
@@ -28,19 +28,19 @@ class DrivingLicenceStencil < BaseStencil
       "municipality",
       "names",
       "surnames",
-      "adress",
+      "address",
       "issue_date",
       "expiration_date"
     ]
   end
 
   attr_reader :license_class, :number, :municipality, :names, :surnames
-  attr_reader :adress, :issue_date, :expiration_date
+  attr_reader :address, :issue_date, :expiration_date
 
   def process_match
     @expiration_date = read_relative_if_possible(:issue, [410, 360], [550, 390])
     @issue_date = read_relative_if_possible(:issue, [425, 325], [540, 350])
-    @adress = read_relative_if_possible(:adress, [310, 285], [540, 320])
+    @address = read_relative_if_possible(:address, [310, 285], [540, 320])
     @surnames = read_relative_if_possible(:surnames, [333, 253], [540, 280])
     @names = read_relative_if_possible(:names, [330, 220], [540, 248])
     @municipality = read_relative_if_possible(:municipality, [375, 185], [540, 215])

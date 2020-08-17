@@ -29,7 +29,7 @@ class DemoController < ApplicationController
         municipality: stencil.municipality,
         names: stencil.names,
         surnames: stencil.surnames,
-        adress: stencil.adress,
+        address: stencil.address,
         issue_date: stencil.issue_date,
         expiration_date: stencil.expiration_date
       }
